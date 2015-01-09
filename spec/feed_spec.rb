@@ -1,4 +1,5 @@
 require_relative "spec_helper"
+require_relative "support/vcr"
 
 RSpec.describe Careers::Feed do
   it "should have the correct endpoint" do
@@ -11,7 +12,7 @@ RSpec.describe Careers::Feed do
     end
   end
 
-  describe ".feed" do
+  describe ".feed", :vcr do
     before { @feed = Careers::Feed.feed }
 
     it "should return an instance of RSS::Rss" do
@@ -29,7 +30,7 @@ RSpec.describe Careers::Feed do
     end
   end
 
-  describe ".fetch" do
+  describe ".fetch", :vcr do
     before { @entries = Careers::Feed.fetch }
 
     it "returns a list of Careers::Feed::Entries" do

@@ -20,7 +20,7 @@ module Careers
       end
 
       def self.build(item)
-        tokens = tokenize_title(item.title)
+        tokens = tokenize_title(item.title.dup)
         new({ guid: item.guid.content,
               url: item.link,
               title: item.title,
