@@ -38,4 +38,18 @@ RSpec.describe Careers::Feed do
       expect(@entries).to all be_a Careers::Feed::Entry
     end
   end
+
+  describe ".validate_filters!" do
+    it "should remove unknown filters" do
+      filters = { location: "one", foo: "three" }
+      Careers::Feed.validate_filters!(filters)
+      expect(filters).to eq({ location: "one" })
+    end
+
+    it "should replace nicley formatted keys with keys that make no sense" do
+      filters = { search_term: "one", allows_remote: "two" }
+      Careers::Feed.validate_filters!(filters)
+      expect(filters).to eq({ searchTerm: "one", allowsremote: "two" })
+    end
+  end
 end
