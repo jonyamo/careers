@@ -5,7 +5,8 @@ module Careers
                 :location      => /\s\(([^\)]+)\)$/ }
 
       attr_reader :guid, :url, :title, :summary, :job_title,
-                  :company, :location, :allows_remote, :published_at
+                  :company, :location, :allows_remote, :published_at,
+                  :categories
 
       def initialize(attrs={})
         @guid = attrs[:guid]
@@ -17,6 +18,7 @@ module Careers
         @location = attrs[:location]
         @allows_remote = attrs[:allows_remote]
         @published_at = attrs[:published_at]
+        @categories = attrs[:categories]
       end
 
       def self.build(item)
@@ -29,6 +31,7 @@ module Careers
               company: tokens[:company],
               location: tokens[:location],
               allows_remote: tokens[:allows_remote],
+              categories: item.categories.collect { |category| category.content },
               published_at: item.pubDate })
       end
 

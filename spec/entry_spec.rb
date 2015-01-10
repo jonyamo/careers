@@ -13,6 +13,7 @@ RSpec.describe Careers::Feed::Entry do
   it { should respond_to :company }
   it { should respond_to :location }
   it { should respond_to :allows_remote }
+  it { should respond_to :categories }
   it { should respond_to :published_at }
 
   describe ".build" do
@@ -28,6 +29,10 @@ RSpec.describe Careers::Feed::Entry do
         link: link,
         title: title,
         description: description,
+        categories: [
+          OpenStruct.new(content: "cat1"),
+          OpenStruct.new(content: "cat2")
+        ],
         pubDate: pub_date ))
 
       expect(entry).to be_a Careers::Feed::Entry
@@ -40,6 +45,7 @@ RSpec.describe Careers::Feed::Entry do
       expect(entry.location).to eq "Location"
       expect(entry.allows_remote).to be true
       expect(entry.published_at).to eq pub_date
+      expect(entry.categories).to eq ["cat1", "cat2"]
     end
   end
 

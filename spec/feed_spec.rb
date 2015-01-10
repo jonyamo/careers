@@ -25,6 +25,7 @@ RSpec.describe Careers::Feed do
         expect(item).to respond_to :link
         expect(item).to respond_to :title
         expect(item).to respond_to :description
+        expect(item).to respond_to :categories
         expect(item).to respond_to :pubDate
       end
     end

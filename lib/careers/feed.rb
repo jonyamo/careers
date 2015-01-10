@@ -20,7 +20,7 @@ module Careers
       end
     end
 
-    def self.feed(filters)
+    def self.feed(filters={})
       validate_filters!(filters)
       response = conn.get "", filters
       RSS::Parser.parse response.body
