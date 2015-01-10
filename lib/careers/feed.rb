@@ -1,7 +1,8 @@
 module Careers
   module Feed
     URL = "https://careers.stackoverflow.com/jobs/feed"
-    FILTERMAP = { search_term: :searchTerm,
+    FILTERMAP = { keywords: :searchTerm,
+                  search_term: :searchTerm,
                   location: :location,
                   allows_remote: :allowsremote,
                   offers_relocation: :offersrelocation }
