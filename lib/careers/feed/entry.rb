@@ -21,6 +21,7 @@ module Careers
         @categories = attrs[:categories]
       end
 
+      # Given an object, massages the attributes into an instance of this class.
       def self.build(item)
         tokens = tokenize_title(item.title.dup)
         new({ guid: item.guid.content,
@@ -35,6 +36,8 @@ module Careers
               published_at: item.pubDate })
       end
 
+      # Given a string of the format "Job Title at Company (Location) [(allows remote)]",
+      # parses and separates it into sections. Returns a hash of the resulting sections.
       def self.tokenize_title(str)
         tokens = {}
 
