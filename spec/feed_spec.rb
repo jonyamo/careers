@@ -3,7 +3,7 @@ require_relative "support/vcr"
 
 RSpec.describe Careers::Feed do
   it "should have the correct endpoint" do
-    expect(Careers::Feed::URL).to eq "https://careers.stackoverflow.com/jobs/feed"
+    expect(Careers::Feed::URL).to eq "https://stackoverflow.com/jobs/feed"
   end
 
   describe ".conn" do
