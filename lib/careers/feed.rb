@@ -28,6 +28,7 @@ module Careers
     def self.feed(filters={})
       validate_filters!(filters)
       response = conn.get "", filters
+      raise response.body if response.status != 200
       RSS::Parser.parse response.body
     end
 
